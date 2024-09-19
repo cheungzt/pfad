@@ -31,7 +31,7 @@ plt.plot(df['Date'], df['數值/Value'], label='Daily Values', marker='o')
 # 添加标题和标签
 plt.title('Daily Mean HKHI - King\'s Park')
 plt.xlabel('Date')
-plt.ylabel('Mean HKHI Value')
+plt.ylabel('Mean HKHI Value') #tyty
 plt.legend()
 
 # 显示图表
