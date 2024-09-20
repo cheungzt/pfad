@@ -1,65 +1,69 @@
 import requests
 from bs4 import BeautifulSoup
-import numpy as np
 import matplotlib.pyplot as plt
 
-# 请求目标网站
-url = "https://www.rottentomatoes.com/browse/tv_series_browse/"  # 根据实际需求修改为正确的网址
-response = requests.get(url)
+# Set the target URL
+url = "https://www.boxofficemojo.com/chart/top_lifetime_gross/?area=XWW"
 
-# 检查请求是否成功
+# Set request headers to simulate a browser request
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+}
+
+# Send a request to the website
+response = requests.get(url, headers=headers)
+
+# Check if the request was successful
 if response.ok:
     print("Data is ready!")
 
-    # 解析 HTML 内容
+    # Parse the HTML content using BeautifulSoup
     content = response.text
-    soup = BeautifulSoup(content, "html.parser")  # 使用 BeautifulSoup 解析 HTML
+    soup = BeautifulSoup(content, "html.parser")
 
-    # 初始化一个空列表来存储提取的数据
-    tideData = []
+    # Initialize empty lists to store movie names and gross revenues
+    movie_names = []
+    grosses = []
 
-    # 查找所有 <td> 标签的内容，这里假设目标数据在 <td> 标签中
-    tides = soup.findAll("td")
+    # Select elements containing movie names
+    name_elements = soup.select('tr td a[href^="/title/"]')
 
-    # 检查是否找到任何 <td> 标签
-    if not tides:
-        print("No <td> elements found. Please check the selector.")
+    # Select elements containing gross revenues
+    gross_elements = soup.select('tr td.a-text-right.mojo-field-type-money')
 
-    # 提取每个 <td> 标签中的数值并清理
-    for tide in tides:
-        tideValue = tide.string  # 获取标签内的文本
-        if tideValue is not None and tideValue.strip():  # 检查文本是否为空
-            try:
-                # 转换为浮点数并添加到列表中
-                tideData.append(float(tideValue.strip()))
-            except ValueError:
-                # 如果转换失败，忽略该数据
-                continue
+    # Check if movie names or gross revenue elements are found
+    if not name_elements or not gross_elements:
+        print("No movie names or gross income elements found. Please check the selectors.")
 
-    # 检查提取到的数据点数量
-    if len(tideData) == 0:
-        print("No numeric data extracted. Please check the HTML structure and the parsing logic.")
+    # Extract movie names and their corresponding gross revenues
+    for name, gross in zip(name_elements, gross_elements):
+        try:
+            # Get the text of the movie name and clean it
+            movie_names.append(name.get_text().strip())
+
+            # Convert the gross revenue to a float, removing "$" and commas
+            gross_value = float(gross.get_text().strip().replace('$', '').replace(',', ''))
+            grosses.append(gross_value)
+        except ValueError:
+            continue
+
+    # Check if any data was extracted
+    if len(grosses) == 0 or len(movie_names) == 0:
+        print("No numeric data or movie names extracted. Please check the HTML structure and the parsing logic.")
     else:
-        # 打印提取数据的数量和前 100 个数据
-        print(f"Number of data points: {len(tideData)}")
-        print("First 100 data points:", tideData[:100])
+        # Print the number of data points and display the first 10
+        print(f"Number of data points: {len(grosses)}")
+        print("First 10 movie names and grosses:")
+        for name, gross in zip(movie_names[:10], grosses[:10]):
+            print(f"{name}: ${gross:,.2f}")
 
-        # 转换为 NumPy 数组以便于统计分析
-        tide_array = np.array(tideData)
-
-        # 基本统计分析
-        print(f"平均值: {np.mean(tide_array)}")
-        print(f"标准差: {np.std(tide_array)}")
-        print(f"最大值: {np.max(tide_array)}")
-        print(f"最小值: {np.min(tide_array)}")
-
-        # 数据可视化
+        # Visualize the data with a bar chart
         plt.figure(figsize=(12, 6))
-        plt.plot(tideData, label="Tide Data")
-        plt.title("Tide Data Visualization")
-        plt.xlabel("Index")
-        plt.ylabel("Value")
-        plt.legend()
+        plt.bar(movie_names[:10], grosses[:10], color='skyblue')
+        plt.title("Top 10 Highest Grossing Movies - Box Office Mojo")
+        plt.xlabel("Movie Name")
+        plt.ylabel("Gross Revenue ($)")
+        plt.xticks(rotation=45)
         plt.grid(True)
         plt.show()
 
