@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35642662-871c-4384-84e7-b7e82085544b" name="更改" comment="change01">
-      <change afterPath="$PROJECT_DIR$/assignment/Request_01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment/ComplexChanged.py" beforeDir="false" afterPath="$PROJECT_DIR$/assignment/ComplexChanged.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment/HongKongHeat.py" beforeDir="false" afterPath="$PROJECT_DIR$/assignment/HongKongHeat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/week6/1_random_audio.py" beforeDir="false" afterPath="$PROJECT_DIR$/week6/1_random_audio.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,9 +45,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.1_random_audio.executor": "Run",
+    "Python.1_user_input.executor": "Run",
+    "Python.2_gen_audio.executor": "Run",
+    "Python.2_user_input_with_history.executor": "Run",
+    "Python.3_synth_audio.executor": "Run",
+    "Python.5_asyncio_loopback.executor": "Run",
     "Python.ComplexChanged.executor": "Run",
     "Python.HongKongHeat.executor": "Run",
     "Python.Request_01.executor": "Run",
+    "Python.display_graph.executor": "Run",
+    "Python.display_image.executor": "Run",
     "Python.mandelbrot.executor": "Run",
     "Python.sierpinksi_matplot_animation.executor": "Run",
     "Python.simple_animation.executor": "Run",
@@ -92,7 +99,47 @@
       <option name="project" value="LOCAL" />
       <updated>1726735671848</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="change01">
+      <option name="closed" value="true" />
+      <created>1726742424375</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726742424375</updated>
+    </task>
+    <task id="LOCAL-00004" summary="change01">
+      <option name="closed" value="true" />
+      <created>1726742669568</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726742669568</updated>
+    </task>
+    <task id="LOCAL-00005" summary="change01">
+      <option name="closed" value="true" />
+      <created>1726743228574</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726743228574</updated>
+    </task>
+    <task id="LOCAL-00006" summary="change01">
+      <option name="closed" value="true" />
+      <created>1726816218138</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726816218139</updated>
+    </task>
+    <task id="LOCAL-00007" summary="change01">
+      <option name="closed" value="true" />
+      <created>1726816372207</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1726816372207</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
